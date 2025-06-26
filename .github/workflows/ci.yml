@@ -1,0 +1,18 @@
+name: Run Tests  # 名前
+
+on:
+  pull_request:  # PRイベントを対象に
+    types:
+      - closed  # PRが閉じたとき（マージ or 却下）
+    branches:
+      - main  # mainブランチへのPRのみ対象
+
+jobs:
+  python:
+    if: github.event.pull_request.merged == true  # マージされた場合のみ実行
+    runs-on: ubuntu-latest  # Ubuntu環境で実行
+
+    steps:
+      - uses: actions/checkout@v3  # コードを取得
+
+      - run: python test.py # Pythonスクリプトを実行
