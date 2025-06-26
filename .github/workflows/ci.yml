@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3  # コードを取得
 
-      - run: python test.py  # Pythonスクリプトを実行
+      - run: python test.py # Pythonスクリプトを実行
