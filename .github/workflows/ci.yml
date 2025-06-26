@@ -14,5 +14,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3  # コードを取得
-
-      - run: python test.py # Pythonスクリプトを実行
+      - uses: ./.github/actions/run-test-action # 自作アクション呼び出し

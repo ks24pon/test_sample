@@ -1,0 +1,9 @@
+name: Run test.py
+description: composite action to run a local Python
+
+runs:
+  using: composite
+  steps:
+    - name: test script
+      run: python test.py
+      shell: bash
