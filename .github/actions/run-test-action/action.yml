@@ -7,3 +7,6 @@ runs:
     - name: test script
       run: python test.py
       shell: bash
+      env:
+        HEIGHT: ${{ input.height }}
+        WEIGHT: ${{ inputs.weight }}
