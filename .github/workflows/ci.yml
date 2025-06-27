@@ -1,21 +1,24 @@
-name: Run Tests  # 名前
+name: Run Tests  # ワークフローの名前
 
 on:
-  pull_request:  # PRイベントを対象に
+  push:  # pushイベントを追加
+    branches:
+      - main  # mainブランチへのpushを対象
+  pull_request:  # PRイベントも継続して対象にする
     types:
-      - closed  # PRが閉じたとき（マージ or 却下）
+      - closed  # PRが閉じられたとき（マージ or クローズ）
     branches:
       - main  # mainブランチへのPRのみ対象
 
 jobs:
   python:
-    if: github.event.pull_request.merged == true  # マージされた場合のみ実行
-    runs-on: ubuntu-latest  # Ubuntu環境で実行
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # コードを取得
+      - uses: actions/checkout@v3  # リポジトリのコードをチェックアウト
 
-      - uses: ./.github/actions/run-test-action # 自作アクション呼び出し
-      with:
-        height: 170
-        weight: 65
+      - uses: ./.github/actions/run-test-action  # 自作アクション呼び出し
+        with:
+          height: 170
+          weight: 65
