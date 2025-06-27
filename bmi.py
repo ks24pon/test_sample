@@ -1,12 +1,14 @@
 import os
+from height_weight_validator import validate_height, validate_weight
 
-# 環境変数から身長と体重を取得
-height_cm = float(os.getenv("HEIGHT"))
-weight_kg = float(os.getenv("WEIGHT"))
+try:
+    # 環境変数から取得してfloatに変換
+    height = validate_height(float(os.getenv("HEIGHT")))
+    weight = validate_weight(float(os.getenv("WEIGHT")))
 
-# BMI計算
-height_m = height_cm / 100
-bmi = weight_kg / (height_m ** 2)
+    # BMI計算
+    bmi = weight / ((height / 100) ** 2)
+    print(f"BMIは {bmi:.2f}")
 
-# 小数第2位まで表示
-print(f"BMIは {bmi:.2f}")
+except Exception as e:
+    print(f"エラー: {e}")
