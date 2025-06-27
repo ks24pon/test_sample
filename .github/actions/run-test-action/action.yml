@@ -5,7 +5,7 @@ runs:
   using: composite
   steps:
     - name: test script
-      run: python test.py
+      run: python bmi.py
       shell: bash
       env:
         HEIGHT: ${{ inputs.height }}
