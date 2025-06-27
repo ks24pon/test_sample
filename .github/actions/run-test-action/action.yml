@@ -1,6 +1,12 @@
 name: Run test.py
 description: composite action to run a local Python
 
+inputs:
+  height:
+    required: true
+  weight:
+    required: true
+
 runs:
   using: composite
   steps:
