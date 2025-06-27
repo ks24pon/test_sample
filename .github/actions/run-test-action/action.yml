@@ -8,5 +8,5 @@ runs:
       run: python test.py
       shell: bash
       env:
-        HEIGHT: ${{ input.height }}
+        HEIGHT: ${{ inputs.height }}
         WEIGHT: ${{ inputs.weight }}
