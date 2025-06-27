@@ -20,5 +20,5 @@ jobs:
 
       - uses: ./.github/actions/run-test-action  # 自作アクション呼び出し
         with:
-          height: 250
+          height: 150
           weight: 65
